@@ -1,4 +1,7 @@
-# Claude Memory MCP Server
+# sqlite-memory-mcp
+
+[![npm version](https://badge.fury.io/js/sqlite-memory-mcp.svg)](https://www.npmjs.com/package/sqlite-memory-mcp)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 > 統一的 SQLite Memory MCP Server，為 Claude Code 生態系提供智能記憶管理
 
@@ -13,7 +16,7 @@
 
 ## 效能
 
-| 指標 | 傳統方案 | claude-memory-mcp |
+| 指標 | 傳統方案 | sqlite-memory-mcp |
 |------|---------|------------------|
 | Token/搜尋 | ~2300 | **~200 (-91%)** |
 | 搜尋速度 | ~20ms | **~3.5ms (5.7x)** |
@@ -22,9 +25,16 @@
 
 ## 安裝
 
+### 從 npm 安裝（推薦）
+
 ```bash
-# 從源碼
-git clone https://github.com/user/claude-memory-mcp.git
+npm install -g sqlite-memory-mcp
+```
+
+### 從源碼安裝
+
+```bash
+git clone https://github.com/miles990/claude-memory-mcp.git
 cd claude-memory-mcp
 npm install
 npm run build
@@ -33,6 +43,19 @@ npm run build
 ## 配置 Claude Code
 
 在 `~/.claude/.mcp.json` 加入：
+
+```json
+{
+  "mcpServers": {
+    "memory": {
+      "command": "npx",
+      "args": ["sqlite-memory-mcp"]
+    }
+  }
+}
+```
+
+或如果從源碼安裝：
 
 ```json
 {
@@ -127,7 +150,7 @@ failure_search query="TypeError undefined"
 
 ## 與競品比較
 
-| 功能 | server-memory | doobidoo | **claude-memory-mcp** |
+| 功能 | server-memory | doobidoo | **sqlite-memory-mcp** |
 |------|--------------|----------|----------------------|
 | 存儲 | JSONL | SQLite-vec | **SQLite WAL** |
 | 搜尋 | 關鍵字 | 向量 | **FTS5 全文** |
@@ -135,6 +158,15 @@ failure_search query="TypeError undefined"
 | 失敗索引 | - | - | **有** |
 | Context 共享 | - | - | **有** |
 | 外部依賴 | 無 | PyTorch | **無** |
+
+## 與 evolve skill 整合
+
+此 MCP Server 設計為與 [self-evolving-agent](https://github.com/miles990/self-evolving-agent) 整合：
+
+- **CP1**: 使用 `memory_search` + `failure_search` 搜尋經驗
+- **CP3.5**: 使用 `memory_write` 記錄學習
+- **CP5**: 使用 `failure_record` 記錄失敗
+- **Skill 追蹤**: 自動追蹤使用成功率
 
 ## License
 
