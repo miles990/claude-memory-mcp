@@ -1,6 +1,6 @@
 {
   "name": "claude-memory-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Unified SQLite Memory MCP Server for Claude Code ecosystem - Memory, Skills, Context, Failures",
   "type": "module",
   "main": "dist/index.js",
