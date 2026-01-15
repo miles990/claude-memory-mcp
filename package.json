@@ -1,0 +1,50 @@
+{
+  "name": "claude-memory-mcp",
+  "version": "1.0.0",
+  "description": "Unified SQLite Memory MCP Server for Claude Code ecosystem - Memory, Skills, Context, Failures",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "claude-memory-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc --watch",
+    "test": "vitest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "claude",
+    "memory",
+    "sqlite",
+    "fts5",
+    "claude-code",
+    "ai-assistant",
+    "knowledge-base"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/user/claude-memory-mcp.git"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "better-sqlite3": "^11.0.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ]
+}
