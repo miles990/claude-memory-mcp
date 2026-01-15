@@ -28,7 +28,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/user/claude-memory-mcp.git"
+    "url": "https://github.com/miles990/claude-memory-mcp.git"
+  },
+  "homepage": "https://github.com/miles990/claude-memory-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/miles990/claude-memory-mcp/issues"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0",
